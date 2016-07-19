@@ -1,6 +1,7 @@
-var mongoose = require("mongoose"); 
-var Schema = mongoose.Schema; 
-var bcrypt = require("bcrypt"); 
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
+const SALT_WORK = 10;
 
 var userSchema = new Schema({
     firsName: {
@@ -10,10 +11,18 @@ var userSchema = new Schema({
     lastName: {
         type: String,
         required: true
-    }, 
+    },
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        lowercase: true
+    },
     email: {
-        type: String, 
-        required: true
+        type: String,
+        required: true,
+        unique: true,
+        lowercase: true
     },
     password: {
         type: String,
@@ -21,17 +30,25 @@ var userSchema = new Schema({
     }
 });
 
-userSchema.pre("save", function(next) {
+userSchema.pre("save", function (next) {
     var user = this;
-    if (!user.isModified("password")) {
-        return next(); 
-    } else {
-        bcrypt.hash(user.password, 10, function(err, hash) {
-            if (err) return next(err); 
-            user.password = hash; 
-            next(); 
+
+    // checks to see if the password is new or modfied to hash
+    if (!user.isModified("password")) return next();
+
+    // generate the salt
+    bcrypt.genSalt(SALT_WORK, function (err, salt) {
+        if (err) return next(err);
+
+        // hash the password incorporating new salt
+        bcrypt.hash(salt, function (err, hash) {
+            if (err) return next(err);
+
+            // change the cleartext password to the hashed password
+            user.password = hash;
+            next();
         });
-    }
+    });
 });
 
-module.exports = mongoose.model("User", userSchema); 
+module.exports = mongoose.model("User", userSchema);
