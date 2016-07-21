@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-const bcrypt = require("bcrypt");
+var mongoose = require("mongoose");
+var Schema = mongoose.Schema;
+var bcrypt = require("bcrypt");
 const SALT_WORK = 10;
 
 var userSchema = new Schema({
@@ -50,5 +50,11 @@ userSchema.pre("save", function (next) {
         });
     });
 });
+
+userSchema.methods.withoutPassword = function() {
+    var user = this.toObject(); 
+    delete user.password; 
+    return user; 
+}
 
 module.exports = mongoose.model("User", userSchema);

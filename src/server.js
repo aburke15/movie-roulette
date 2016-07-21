@@ -20,8 +20,8 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 
 app.use("/api", expressJwt({secret: config.secret})); 
 
-app.use("/auth", require("./routes/authRoutes")); 
-app.use("/api/movies", require("./routes/movieRoutes")); 
+app.use("/auth", require("./routes/authRouter")); 
+app.use("/api/movies", require("./routes/movieRouter")); 
 
 app.listen(port, function() {
     console.log("App is listening on port " + port); 
