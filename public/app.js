@@ -1,4 +1,4 @@
-var app = angular.module("MovieApp", ["ngRoute", "movieApp.Auth"]);
+var app = angular.module("MovieApp", ["ngRoute", "MovieApp.Auth"]);
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -8,6 +8,10 @@ app.config(function($routeProvider) {
         .when("/movies", {
             templateUrl: "components/movies/movies.html",
             controller: "MovieController"
+        })
+        .when("/profile", {
+            templateUrl: "components/profile/profile.html",
+            controller: "ProfileController"
         })
         .when("/signup", {
             templateUrl: "components/auth/signup.html", 
