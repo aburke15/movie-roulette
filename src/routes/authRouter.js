@@ -1,13 +1,14 @@
 var express = require("express"); // pull in express to user the Router method
 var authRouter = express.Router(); // declare and instantiate the Router method
-var User = require("../models/user");
-var jwt = require("jsonwebtoken");
-var config = require("../config");
-var bcrypt = require("bcrypt");
+var User = require("../models/user"); // pulls in the user schema 
+var jwt = require("jsonwebtoken"); // produces a json web token 
+var config = require("../config"); // pulls in the config file with the secret
+var bcrypt = require("bcrypt"); // pulls in bcrypt to hash the user password    
 
 authRouter.route("/login")
     .post(function (req, res) {
         User.findOne({
+            // checks for the username in the database 
             username: req.body.username
         }, function (err, user) {
             if (err) res.status(500).send(err);
