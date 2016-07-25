@@ -14,15 +14,15 @@ app.config(function($routeProvider) {
             controller: "ProfileController"
         })
         .when("/signup", {
-            templateUrl: "components/auth/signup.html", 
+            templateUrl: "components/auth/signup.html",
             controller: "SignupController"
         })
         .when("/login", {
-            templateUrl: "components/auth/login.html", 
+            templateUrl: "components/auth/login.html",
             controller: "LoginController"
         })
         .when("/logout", {
-            template: "", 
+            template: "",
             controller: "LogoutController"
         })
         .otherwise({
