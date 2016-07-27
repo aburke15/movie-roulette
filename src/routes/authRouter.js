@@ -6,11 +6,11 @@ var config = require("../config"); // pulls in the config file with the secret
 var bcrypt = require("bcrypt"); // pulls in bcrypt to hash the user password    
 
 authRouter.route("/login")
-    .post(function (req, res) {
+    .post(function(req, res) {
         User.findOne({
             // checks for the username in the database 
             username: req.body.username
-        }, function (err, user) {
+        }, function(err, user) {
             if (err) res.status(500).send(err);
             if (!user) {
                 res.status(401).send({
@@ -19,7 +19,7 @@ authRouter.route("/login")
                 });
             } else {
                 // use bcrypt to compare the request body password with the user password
-                bcrypt.compare(req.body.password, user.password, function (err, match) {
+                bcrypt.compare(req.body.password, user.password, function(err, match) {
                     if (err) {
                         // if there is an error send status of 500
                         res.status(500).send(err);
@@ -39,17 +39,17 @@ authRouter.route("/login")
                             message: "Token retrieved"
                         });
                     }
-                 });
+                });
             }
         });
     });
 
 authRouter.route("/signup")
-// check to see if the username already exists
-    .post(function (req, res) {
+    // check to see if the username already exists
+    .post(function(req, res) {
         User.findOne({
             username: req.body.username
-        }, function (err, existingUser) {
+        }, function(err, existingUser) {
             if (err) res.status(500).send(err);
             if (existingUser) res.send({
                 success: false,
@@ -58,8 +58,8 @@ authRouter.route("/signup")
             else {
                 // if the user name does not exist allow the user to add a new user
                 var newUser = new User(req.body);
-                newUser.save(function (err, user) {
-                    if (err) res.status(500).send(err); 
+                newUser.save(function(err, user) {
+                    if (err) res.status(500).send(err);
                     else res.send({
                         success: true,
                         user: user,

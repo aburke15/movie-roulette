@@ -3,7 +3,8 @@ var app = angular.module("MovieApp", ["ngRoute", "MovieApp.Auth"]);
 app.config(function($routeProvider) {
     $routeProvider
         .when("/", {
-            templateUrl: "components/home/home.html"
+            templateUrl: "components/home/home.html",
+            controller: "HomeController"
         })
         .when("/movies", {
             templateUrl: "components/movies/movies.html",
