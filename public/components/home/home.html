@@ -2,7 +2,8 @@
     <div class="row jumbotron">
         <h1 class="text-center">Welcome!</h1>
         <div>
-            <p class="text-center">Please <a href="#/login">login</a> or <a href="#/signup">signup</a> to see your movies</p>
+            <p ng-hide="userService.isAuthenticated()" class="text-center">Please <a href="#/login">login</a> or <a href="#/signup">signup</a> to see your movies</p>
+            <p ng-show="userService.isAuthenticated()" class="text-center">View your <a href="#/movies">movies</a> or <a href="#/profile">profile</a> here!</p>
         </div>
     </div>
 </div>
