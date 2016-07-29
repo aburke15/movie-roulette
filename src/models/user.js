@@ -1,7 +1,6 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var bcrypt = require("bcrypt");
-const SALT_WORK = 10;
 
 // user schema defined below 
 var userSchema = new Schema({
@@ -33,23 +32,17 @@ var userSchema = new Schema({
 
 userSchema.pre("save", function(next) {
     var user = this;
-
-    // checks to see if the password is new or modfied to hash
-    if (!user.isModified("password")) return next();
-
-    // generate the salt
-    bcrypt.genSalt(SALT_WORK, function(err, salt) {
-        if (err) return next(err);
-
-        // hash the password incorporating new salt
-        bcrypt.hash(salt, function(err, hash) {
+    // checks to see if the password is new or 
+    if (!user.isModified("password")) {
+        return next();
+    } else {
+        // if the password is new hash the password
+        bcrypt.hash(user.password, 10, function(err, hash) {
             if (err) return next(err);
-
-            // change the cleartext password to the hashed password
             user.password = hash;
             next();
         });
-    });
+    }
 });
 
 userSchema.methods.withoutPassword = function() {
