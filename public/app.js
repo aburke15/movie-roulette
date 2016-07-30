@@ -14,6 +14,10 @@ app.config(function($routeProvider) {
             templateUrl: "components/profile/profile.html",
             controller: "ProfileController"
         })
+        .when("/friends", {
+            templateUrl: "components/friends/friends.html",
+            controller: "FriendsController"
+        })
         .when("/signup", {
             templateUrl: "components/auth/signup.html",
             controller: "SignupController"

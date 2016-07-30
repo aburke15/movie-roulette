@@ -21,12 +21,16 @@ var userSchema = new Schema({
     email: {
         type: String,
         required: true,
-        unique: true,
         lowercase: true
+    },
+    phone: {
+        type: Number,
+        required: false,
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     }
 });
 
