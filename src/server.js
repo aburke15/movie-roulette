@@ -13,8 +13,8 @@ mongoose.connect(config.database, function () {
     console.log("Connection to mongodb successful");
 });
 
-app.use(cors());
 app.use(bodyParser.json());
+app.use(cors()); 
 app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "..", "public")));
 
