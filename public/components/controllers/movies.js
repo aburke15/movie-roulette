@@ -1,5 +1,8 @@
 var app = angular.module("MovieApp");
 
-app.controller("MovieController", ["$scope", "$location", function($scope, $location) {
-    
-}]);
+app.controller("MovieController", ["$scope", "$location", "MovieService", function ($scope, $location, MovieService) {
+    var query = encodeURIComponent($scope.params);
+    $scope.getMovies = function (query) {
+        MovieService.getMovies(query);
+    }
+}])

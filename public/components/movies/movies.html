@@ -1,7 +1,16 @@
 <div class="container test-margin">
     <div class="row">
         <div class="well">
-
+            <form class="form-group">
+                <div class="control-group">
+                    <label for="">Search Movies:</label>
+                    <input class="form-control" type="search" name="" value="" ng-model="params">
+                </div>
+                <br>
+                <div>
+                    <button ng-click="getMovies(params)" class="btn btn-default center-block" type="button">Search Movies</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
