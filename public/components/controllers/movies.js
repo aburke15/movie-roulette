@@ -9,5 +9,5 @@ app.controller("MovieController", ["$scope", "$location", "MovieService", functi
     
     $scope.saveMovies = function () {
         
-    }
+    }    
 }]);
