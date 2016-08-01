@@ -1,16 +1,27 @@
 <div class="container test-margin">
     <div class="row">
-        <div class="well">
+        <div class="">
             <form class="form-group">
+               <h1 class="text-center"><i>Search For Movies</i></h1>
+               <br>
                 <div class="control-group">
-                    <label for="">Search Movies:</label>
-                    <input class="form-control" type="search" name="" value="" ng-model="params">
+                    <input class="form-control center-block input-field" type="search" name="" value="" ng-model="params" placeholder="Enter Movie Title...">
                 </div>
                 <br>
                 <div>
-                    <button ng-click="getMovies(params)" class="btn btn-default center-block" type="button">Search Movies</button>
+                    <button ng-click="getMovies(params)" class="btn btn-primary center-block" type="button">Go!</button>
                 </div>
             </form>
+            <hr>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row" ng-repeat="list in movieService.movieList track by $index">
+        <div class="well">
+            
         </div>
     </div>
 </div>
