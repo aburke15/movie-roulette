@@ -19,9 +19,11 @@
 
 
 <div class="container">
-    <div class="row" ng-repeat="list in movieService.movieList track by $index">
-        <div class="well">
-            
+    <div class="row" >
+        <div class="well" ng-repeat="list in movieService.movieList track by $index">
+            <div>
+                <h1>{{ list.}}</h1>
+            </div>
         </div>
     </div>
 </div>
