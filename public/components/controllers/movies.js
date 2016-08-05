@@ -5,6 +5,7 @@ app.controller("MovieController", ["$scope", "$location", "MovieService", functi
     var query = encodeURIComponent($scope.params);
     $scope.getMovies = function (query) {
         MovieService.getMovies(query);
+        $scope.params = ""; 
     } 
     
     $scope.saveMovies = function () {

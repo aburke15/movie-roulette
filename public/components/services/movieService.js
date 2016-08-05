@@ -20,13 +20,10 @@ app.service("MovieService", ["$http", function ($http) {
     }
 
     this.saveMovie = function () {
-
+        
     }
 
     this.getOneMovie = function () {
 
     }
-
-
-
 }]);
