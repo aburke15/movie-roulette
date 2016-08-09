@@ -26,4 +26,6 @@ app.service("MovieService", ["$http", function ($http) {
     this.getOneMovie = function () {
 
     }
+    
+    
 }]);

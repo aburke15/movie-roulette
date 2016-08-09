@@ -5,3 +5,7 @@
 .input-field {
     width: 50%; 
 }
+
+.inline {
+    display: inline-block; 
+}
