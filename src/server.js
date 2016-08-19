@@ -23,6 +23,7 @@ app.use("/api", expressJwt({
 }));
 
 app.use("/auth", require("./routes/authRouter"));
+
 app.use("/api/movies", require("./routes/movieRouter"));
 
 app.listen(port, function () {

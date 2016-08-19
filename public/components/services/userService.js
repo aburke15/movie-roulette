@@ -10,7 +10,6 @@ app.service("UserService", ["$http", "$location", "TokenService", function($http
     this.login = function(user) {
         return $http.post("auth/login", user).then(function(response) {
             TokenService.setToken(response.data.token);
-            //$location.path("/movies");
             return response;
         });
     }
