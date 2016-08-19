@@ -10,7 +10,7 @@ app.factory("AuthInterceptor", ["$location", "$q", "TokenService", function($loc
             }
             return config;
         },
-        ressponseError: function(response) {
+        responseError: function(response) {
             if (response.status === 401) {
                 TokenService.removeToken();
                 $location.path("/login");

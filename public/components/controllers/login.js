@@ -8,6 +8,7 @@ app.controller("LoginController", ["$scope", "$location", "UserService", functio
             $location.path("/movies");
         }, function(response) {
             // if there is an issue with login display alert window
+            console.log(response); 
             alert("Login was unsuccessful!");
         });
     }
