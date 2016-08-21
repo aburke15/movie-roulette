@@ -9,7 +9,7 @@ app.service("UserService", ["$http", "$location", "TokenService", function($http
     // sends post request to user login endpoint on the server 
     this.login = function(user) {
         return $http.post("auth/login", user).then(function(response) {
-            TokenService.setToken(response.data.token);
+            TokenService.setToken(response.data.token); 
             return response;
         });
     }
