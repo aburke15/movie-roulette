@@ -34,14 +34,14 @@ var userSchema = new Schema({
     }
 });
 
-userSchema.pre("save", function(next) {
+userSchema.pre("save", function (next) {
     var user = this;
     // checks to see if the password is new or 
     if (!user.isModified("password")) {
         return next();
     } else {
         // if the password is new hash the password
-        bcrypt.hash(user.password, 10, function(err, hash) {
+        bcrypt.hash(user.password, 10, function (err, hash) {
             if (err) return next(err);
             user.password = hash;
             next();
@@ -49,7 +49,7 @@ userSchema.pre("save", function(next) {
     }
 });
 
-userSchema.methods.withoutPassword = function() {
+userSchema.methods.withoutPassword = function () {
     var user = this.toObject();
     delete user.password;
     return user;
